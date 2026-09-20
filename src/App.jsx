@@ -18,7 +18,7 @@ const toolkit = {
   Analysis: ['Requirements elicitation', 'Gap analysis', 'Use cases & user stories', 'Acceptance criteria'],
   Documentation: ['BRD / FRD', 'BPMN (as-is / to-be)', 'Data flow diagrams', 'Traceability'],
   Data: ['SQL', 'Power BI & DAX', 'Star-schema modeling', 'Advanced Excel'],
-  Technical: ['Python (pandas)', 'Git & GitHub', 'GitHub Actions', 'Relational DB design'],
+  AI: ['Claude Code & agent workflows', 'Custom skills: BRD, BPMN, DAX', 'Prompt engineering', 'AI-assisted automation (Python)'],
   Tools: ['Jira & Confluence', 'Bizagi / draw.io', 'Figma', 'Tableau (learning)'],
 }
 
