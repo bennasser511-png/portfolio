@@ -4,6 +4,7 @@
 const T = '/projects/ticketing'
 const F = '/projects/financial'
 const K = '/projects/kpi'
+const C = '/projects/cars'
 
 export const projects = [
   {
@@ -201,6 +202,77 @@ Region = SWITCH(TRUE(),
           'This is a prototype built on a 189-row training sample. Service type, problem type, line system, handling time, contact count and city are from the sample. Customer rating and conversation date were simulated (RANDBETWEEN) to prototype the CSAT card and the weekly trend — those two visuals demonstrate the mechanics, not real performance.',
           'The model is a single flat table, which is adequate at this size. The Financial Analysis project shows the star-schema approach I use for larger datasets.',
         ],
+      },
+    ],
+  },
+  {
+    slug: 'cars',
+    title: 'Used Cars Market Analysis',
+    subtitle: 'Power BI · Snowflake Schema · Market Insights',
+    img: `${C}/dashboard.png`,
+    alt: 'Used cars market dashboard for Saudi Arabia in Power BI',
+    problem: 'Used-car listings for Saudi Arabia sat in a flat spreadsheet with no view of how price and mileage move by brand, region, or model year.',
+    points: [
+      'Interactive filters for year range, make, city, category and gear type, with a regional sales map.',
+      'Price trend by model year, and average price and mileage compared across 10 brands.',
+      'Modeled a snowflake schema (1 fact + 6 dimensions) and wrote the DAX measures behind every KPI.',
+    ],
+    tags: ['Power BI', 'DAX', 'Power Query', 'Snowflake schema'],
+    meta: [
+      ['Role', 'Data modeler & report author'],
+      ['Data', '5,159 listings · 61 makes · 27 regions · years 1980–2021 (public dataset)'],
+      ['Model', '1 fact table, 6 dimensions, 7 many-to-one relationships'],
+      ['Measures', '4 DAX measures + 2 calculated columns'],
+    ],
+    sections: [
+      {
+        kind: 'video',
+        title: 'Walkthrough',
+        body: ['Recording of the interactive dashboard: filtering by year range and make, the regional sales map, and the price-by-year trend responding live.'],
+        src: `${C}/cars-demo.mp4`,
+        poster: `${C}/cars-poster.png`,
+      },
+      {
+        kind: 'images',
+        title: 'Dashboard',
+        body: ['Slicers for year, make, city, category and gear type. KPI cards for listing count, top-selling make, average mileage and average price. Regional sales map, price-by-year trend, brand comparison table, and a stacked chart of sales by make and category.'],
+        images: [{ src: `${C}/dashboard.png`, alt: 'Used cars market dashboard, full view' }],
+      },
+      {
+        kind: 'model',
+        title: 'Data model',
+        body: ['Snowflake schema: one fact table, six single-column dimension tables. Simpler than a star schema per dimension, but it keeps the fact table narrow and each filter (make, region, color, fuel type, gear type, year, options) independent.'],
+        fact: { name: 'Cars', cols: ['Make', 'Region', 'Color', 'Fuel_Type', 'Gear_Type', 'Year', 'Options', 'Price', 'Mileage'] },
+        dims: [
+          { name: 'Dim_Maker', key: 'Make', cols: ['61 makes'] },
+          { name: 'Dim_Region', key: 'Region', cols: ['27 regions'] },
+          { name: 'Dim_year', key: 'Year', cols: ['47 years, 1980–2021'] },
+          { name: 'Dim_color', key: 'Color', cols: ['14 colors'] },
+          { name: 'Dim_FuelType', key: 'Fuel_Type', cols: ['Petrol, Diesel, Hybrid'] },
+          { name: 'Dim_GearType', key: 'Gear_Type', cols: ['Automatic, Manual'] },
+        ],
+      },
+      {
+        kind: 'code',
+        title: 'DAX measures',
+        body: ['Core aggregates plus a ranking measure for "top-selling make," and two calculated columns that bin price and mileage into 10K brackets for the distribution visuals.'],
+        code: `Avg Price    = AVERAGE(Cars[Price])
+Avg Mileage  = AVERAGE(Cars[Mileage])
+Listing Count = COUNTROWS(Cars)
+
+Top Make =
+VAR MakeCounts =
+    ADDCOLUMNS(VALUES(Cars[Make]), "Count", CALCULATE(COUNTROWS(Cars)))
+VAR MaxCount = MAXX(MakeCounts, [Count])
+RETURN MAXX(FILTER(MakeCounts, [Count] = MaxCount), Cars[Make])
+
+Price (bins)   = IF(ISBLANK(Cars[Price]), BLANK(), INT(Cars[Price] / 10000) * 10000)
+Mileage (bins) = IF(ISBLANK(Cars[Mileage]), BLANK(), INT(Cars[Mileage] / 10000) * 10000)`,
+      },
+      {
+        kind: 'text',
+        title: 'Data note',
+        body: ['Listings are a public used-car dataset for Saudi Arabia (Kaggle), used here for training. Not live market data or scraped from any specific platform.'],
       },
     ],
   },
