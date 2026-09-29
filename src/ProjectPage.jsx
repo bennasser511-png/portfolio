@@ -31,7 +31,7 @@ const Model = ({ s }) => (
         <div className="tbl-name">{s.fact.name}</div>
         {s.fact.cols.map(c => <div key={c}>{c}</div>)}
       </div>
-      <div className="rel">4 × many-to-one → dimensions</div>
+      <div className="rel">{s.dims.length} × many-to-one → dimensions</div>
     </div>
   </div>
 )
