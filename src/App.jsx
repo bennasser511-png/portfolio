@@ -9,7 +9,6 @@ import ShinyText from './bits/ShinyText'
 import SpotlightCard from './bits/SpotlightCard'
 
 const LINKEDIN = 'https://www.linkedin.com/in/alwaleed-alotaibi71'
-const PHONE = { display: '+966 50 451 8061', href: 'tel:+966504518061' }
 const EMAIL = 'mailto:alwaleedalotaibi71@gmail.com'
 const CV = { href: '/cv.pdf', download: 'Alwaleed-Alotaibi-Business-Analyst.pdf' }
 const SPOT = 'rgba(55,225,188,.18)'
@@ -207,7 +206,6 @@ const Home = () => (
           <p>Open to Business Analyst and Data Analyst roles in Saudi Arabia.</p>
           <div className="contact-links">
             <a href={EMAIL} className="btn btn-primary">Email me</a>
-            <a href={PHONE.href} className="btn btn-outline">{PHONE.display}</a>
             <a href={LINKEDIN} className="btn btn-outline" target="_blank" rel="noopener">LinkedIn</a>
             <a {...CV} className="btn btn-outline">Download CV</a>
           </div>
