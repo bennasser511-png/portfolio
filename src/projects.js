@@ -5,6 +5,7 @@ const T = '/projects/ticketing'
 const F = '/projects/financial'
 const K = '/projects/kpi'
 const C = '/projects/cars'
+const S = '/projects/sanad'
 
 export const projects = [
   {
@@ -202,6 +203,90 @@ Region = SWITCH(TRUE(),
           'This is a prototype built on a 189-row training sample. Service type, problem type, line system, handling time, contact count and city are from the sample. Customer rating and conversation date were simulated (RANDBETWEEN) to prototype the CSAT card and the weekly trend — those two visuals demonstrate the mechanics, not real performance.',
           'The model is a single flat table, which is adequate at this size. The Financial Analysis project shows the star-schema approach I use for larger datasets.',
         ],
+      },
+    ],
+  },
+  {
+    slug: 'sanad',
+    title: 'Sanad — Legal Consultation Platform',
+    subtitle: 'Graduation Project · Full Requirements Lifecycle',
+    img: `${S}/erd.jpg`,
+    alt: 'Entity-relationship diagram for the Sanad legal consultation system',
+    problem: 'Individuals and small businesses in Saudi Arabia had no direct channel to reach a lawyer for a legal consultation — no structured way to request one, track its status, or pay for it.',
+    points: [
+      'Surveyed 120 respondents to validate the problem and extract functional requirements before any design work.',
+      'Full requirements-to-design lifecycle: context diagram, 3-level DFD, use case diagram, ERD, relational schema.',
+      'Delivered under the Waterfall methodology as a BSc Management Information Systems graduation project, Taibah University.',
+    ],
+    tags: ['BRD', 'DFD', 'ERD', 'Use cases', 'Waterfall', 'Draw.io'],
+    meta: [
+      ['Role', 'Business analyst (team of students)'],
+      ['Methodology', 'Waterfall — 5 phases, each gated on the previous'],
+      ['Research', '120-respondent survey on legal-consultation habits and pain points'],
+      ['Stack', 'PHP/Laragon local server, relational DB — built after this design phase'],
+    ],
+    sections: [
+      {
+        kind: 'text',
+        title: 'Problem',
+        body: [
+          "“Sanad” (سند, Arabic for “support/backing”) is a system designed to connect clients directly with lawyers and simplify requesting a legal consultation.",
+          'Before any design work, the team surveyed 120 people: had they used a legal-consultation app before, how did it go, what channel did they prefer to reach a lawyer, how long did getting help usually take. 51.7% said no equivalent app existed for them; 42.5% had needed legal advice before and never got it.',
+        ],
+      },
+      {
+        kind: 'images',
+        title: 'Survey results',
+        body: ['A sample of the 120 responses that shaped the functional requirements below — what services lawyers should list, what each service needs from the client, and the preferred contact method.'],
+        images: [{ src: `${S}/survey-results.jpg`, alt: 'Survey results: prior use of legal consultation, and whether such an app existed' }],
+      },
+      {
+        kind: 'images',
+        title: 'Context diagram',
+        body: ['Every external entity the system talks to — client, lawyer, administrator, accounting — and what data flows in and out. No internal processes shown at this level, only the system boundary.'],
+        images: [{ src: `${S}/context-diagram.jpg`, alt: 'Context diagram (Diagram 0) for the Sanad system' }],
+      },
+      {
+        kind: 'images',
+        title: 'Data flow diagrams',
+        body: ['Level 0 (seven core processes: create account, log in, create request, payment, process request, rating, manage permissions) and one Level 1 diagram detailing a single process — creating a consultation request — into its sub-steps.'],
+        images: [
+          { src: `${S}/dfd-level0.jpg`, alt: 'Level 0 data flow diagram' },
+          { src: `${S}/dfd-level1.jpg`, alt: 'Level 1 data flow diagram: create-request process detail' },
+        ],
+      },
+      {
+        kind: 'images',
+        title: 'Use case diagram',
+        body: ['Two actors — client and lawyer — against shared and role-specific use cases: create account, log in, browse requests, submit a consultation, rate a lawyer, review a case.'],
+        images: [{ src: `${S}/use-case.jpg`, alt: 'Use case diagram', portrait: true }],
+      },
+      {
+        kind: 'images',
+        title: 'Entity-relationship diagram',
+        body: ['Six entities — Client, Lawyer, Administrator, Counseling, Appointment, Review, Invoice — with cardinality on every relationship (lawyers manage counseling requests, clients consult lawyers, invoices tie back to a counseling record).'],
+        images: [{ src: `${S}/erd.jpg`, alt: 'Entity-relationship diagram' }],
+      },
+      {
+        kind: 'images',
+        title: 'Relational schema',
+        body: ['The ERD translated into relational tables with primary and foreign keys, then the same design redrawn to show every FK reference explicitly before implementation.'],
+        images: [
+          { src: `${S}/relational-schema.jpg`, alt: 'Relational database tables' },
+          { src: `${S}/db-schema.jpg`, alt: 'Database schema with primary/foreign key relationships' },
+        ],
+        cols: 2,
+      },
+      {
+        kind: 'images',
+        title: 'Customer journey',
+        body: ['The full client path through the built application: landing page → account creation or login → submit a consultation request → track its status → rate the lawyer.'],
+        images: [{ src: `${S}/customer-journey.jpg`, alt: 'Customer journey flowchart through the application' }],
+      },
+      {
+        kind: 'text',
+        title: 'Note',
+        body: ['This project predates the others on this site (Taibah University, 2023) and is the one that taught me the requirements-to-design discipline the newer projects apply. Built with a student team under the Waterfall model; the design artifacts above are mine. No live demo — the deliverable was the design and a local Laragon build, not a hosted product.'],
       },
     ],
   },
