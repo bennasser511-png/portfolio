@@ -220,10 +220,10 @@ Region = SWITCH(TRUE(),
     ],
     tags: ['BRD', 'DFD', 'ERD', 'Use cases', 'Waterfall', 'Draw.io'],
     meta: [
-      ['Role', 'Business analyst (team of students)'],
+      ['Role', 'Team project: requirements elicitation, Jira delivery tracking, relational data model'],
       ['Methodology', 'Waterfall — 5 phases, each gated on the previous'],
       ['Research', '120-respondent survey on legal-consultation habits and pain points'],
-      ['Stack', 'PHP/Laragon local server, relational DB — built after this design phase'],
+      ['Tools', 'Draw.io, Google Forms, Word, Discord, Laragon (local server), VS Code'],
     ],
     sections: [
       {
@@ -231,7 +231,7 @@ Region = SWITCH(TRUE(),
         title: 'Problem',
         body: [
           "“Sanad” (سند, Arabic for “support/backing”) is a system designed to connect clients directly with lawyers and simplify requesting a legal consultation.",
-          'Before any design work, the team surveyed 120 people: had they used a legal-consultation app before, how did it go, what channel did they prefer to reach a lawyer, how long did getting help usually take. 51.7% said no equivalent app existed for them; 42.5% had needed legal advice before and never got it.',
+          'Before any design work, the team surveyed 120 people: had they used a legal-consultation app before, how did it go, what channel did they prefer to reach a lawyer, how long did getting help usually take. 51.7% had never used a legal-consultation app, 42.5% asked whether such apps even exist, and 42.5% had needed legal advice at some point and never got it.',
         ],
       },
       {
@@ -286,7 +286,7 @@ Region = SWITCH(TRUE(),
       {
         kind: 'text',
         title: 'Note',
-        body: ['This project predates the others on this site (Taibah University, 2023) and is the one that taught me the requirements-to-design discipline the newer projects apply. Built with a student team under the Waterfall model; the design artifacts above are mine. No live demo — the deliverable was the design and a local Laragon build, not a hosted product.'],
+        body: ['BSc graduation project, Taibah University, 2023 — older than the other projects on this site and built by a student team under the Waterfall model. The diagrams above are from the project team deck. No live demo: the deliverable was the design documentation and a local Laragon build, not a hosted product.'],
       },
     ],
   },
