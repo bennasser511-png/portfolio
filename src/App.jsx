@@ -56,7 +56,7 @@ const domains = [
 const certs = [
   { badge: 'IIBA', title: 'Entry Certificate in Business Analysis (ECBA)', org: 'International Institute of Business Analysis', year: '2026', img: '/img/ecba-cert.png' },
   { badge: 'PL', title: 'PL-300: Microsoft Power BI Data Analyst', org: 'Microsoft Certified', status: 'in progress' },
-  { badge: 'BI', title: 'Business Intelligence Track', org: 'Satr Platform (Tuwaiq Academy) — SQL 101/102/103, Tableau, Power BI', year: '2026' },
+  { badge: 'BI', title: 'Business Intelligence Track — 9 courses', org: 'Satr Platform (Tuwaiq Academy) — SQL 101/102/103, Power BI 101/102/103, Tableau, BI fundamentals. A certificate for each course.', year: '2026' },
   { badge: 'BA', title: 'Business Analysis Program', org: 'Misk Foundation' },
   { badge: 'XL', title: 'Data Analysis with Excel', org: 'Professional course' },
 ]
