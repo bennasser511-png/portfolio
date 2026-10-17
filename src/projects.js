@@ -6,8 +6,87 @@ const F = '/projects/financial'
 const K = '/projects/kpi'
 const C = '/projects/cars'
 const S = '/projects/sanad'
+const O = '/projects/onboarding'
 
 export const projects = [
+  {
+    slug: 'onboarding',
+    title: 'Employee Onboarding & IT Access System',
+    subtitle: 'Business Requirements · BPMN · ERD · Wireframes',
+    img: `${O}/to-be.png`,
+    alt: 'To-be BPMN process for onboarding a new employee',
+    problem: 'New hires started work without a laptop or with incomplete access: requests were scattered across emails and no one saw the whole picture.',
+    points: [
+      'Mapped the as-is and to-be processes across six lanes and tied every pain point to the requirement that fixes it.',
+      'Core rule: no access is granted before Information Security approves it, and every approval is logged.',
+      'Targets: onboarding time from 7 days to 4, day-one readiness from 70% to 90%.',
+    ],
+    tags: ['BRD', 'BPMN', 'Use cases', 'ERD', 'Wireframes', 'Traceability', 'Jira', 'Figma'],
+    meta: [
+      ['Role', 'Business Analyst (solo)'],
+      ['Domain', 'Corporate IT & HR operations (fictional company)'],
+      ['Tools', 'Bizagi, Draw.io, Figma, Word, Jira'],
+      ['Deliverables', 'BRD (10 pages), as-is / to-be BPMN, use case diagram, 8-entity ERD, 2 wireframes'],
+    ],
+    sections: [
+      {
+        kind: 'text',
+        title: 'Problem',
+        body: [
+          'After a hire is approved, HR emails the department manager for the access list, IT chases missing details, Information Security reviews, and Finance and Facilities get separate emails. No one owns the process end to end.',
+          'Baseline: 7 working days until a new hire is productive, about 12 emails per request, 30% start without a device or with incomplete access, and about 15% of requests get access without a documented approval. Figures are assumptions for a fictional company, stated as such in the BRD.',
+        ],
+      },
+      {
+        kind: 'images',
+        title: 'As-is process',
+        body: ['Six lanes: HR, department manager, IT service desk, Information Security, Finance, Facilities. Five pain points (PP-01 to PP-05) are marked on the steps where they occur, including the informal shortcut where access is added before security approval.'],
+        images: [{ src: `${O}/as-is.png`, alt: 'As-is BPMN process' }],
+      },
+      {
+        kind: 'images',
+        title: 'To-be process',
+        body: ['HR registers the hire once and the system creates the request. The manager picks a job title, access is pre-filled from the standard list for that role, Security approves or returns it, and tasks are distributed automatically. Finance and Facilities start in parallel, and IT is escalated after two working days.'],
+        images: [{ src: `${O}/to-be.png`, alt: 'To-be BPMN process' }],
+      },
+      {
+        kind: 'images',
+        title: 'Use case diagram',
+        body: ['Eleven use cases across six actors, with include and extend relationships: security review includes saving the approval to the audit log and distributing tasks, and can extend to returning the request for edits.'],
+        images: [{ src: `${O}/use-cases.png`, alt: 'Use case diagram' }],
+      },
+      {
+        kind: 'images',
+        title: 'Entity-relationship diagram',
+        body: ['Eight entities: department, job title, access profile, user, employee, onboarding request, task and audit log. The request links to two users (created by HR, assigned manager), and each task and audit entry points back to its request.'],
+        images: [{ src: `${O}/erd.png`, alt: 'Entity-relationship diagram' }],
+      },
+      {
+        kind: 'images',
+        title: 'Wireframes',
+        body: ['Two low-fidelity screens: the request form for the department manager, with access pre-filled from the job title, and the status board for HR and IT with a per-team progress column and a report export.'],
+        images: [
+          { src: `${O}/wireframe-1.png`, alt: 'Wireframe: new employee request form' },
+          { src: `${O}/wireframe-2.png`, alt: 'Wireframe: request status board' },
+        ],
+        cols: 2,
+      },
+      {
+        kind: 'text',
+        title: 'Requirements and traceability',
+        body: [
+          'Five pain points map to six business requirements (BR-01 to BR-06), which map to ten functional requirements (FR-01 to FR-10) and eleven use cases (UC-01 to UC-11), plus six non-functional requirements covering security, audit, performance, availability, language and data privacy.',
+          'Every functional requirement carries a priority and points to the business requirement it serves, so any item can be traced from the problem to the use case and back.',
+        ],
+        download: { href: `${O}/EOS-BRD.docx`, label: 'Download BRD (Word)' },
+      },
+      {
+        kind: 'text',
+        title: 'Status',
+        body: ['Self-initiated portfolio project on a fictional company, built to practise the full BA lifecycle. The BRD is v0.2 (draft); the Jira backlog and UAT scenarios are still in progress, so this page covers the analysis and design phases only.'],
+      },
+    ],
+  },
   {
     slug: 'ticketing',
     title: 'Inbound Ticketing System',

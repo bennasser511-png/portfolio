@@ -24,14 +24,13 @@ const toolkit = {
 
 const experience = [
   {
-    current: true,
-    date: 'Feb 2024 – Present',
+    date: 'Feb 2024 – Oct 2026',
     role: 'Customer Service Agent',
     company: 'Upsource by Solutions — client: ccc by stc',
     points: [
-      'Resolve 40–50 internet-service and billing conversations per day within an SLA-driven contact center handling over 10,000 daily conversations.',
-      'Identify recurring fault patterns across conversations and report root causes to support process-improvement initiatives.',
-      'Work daily inside CRM and billing systems, tracing how case data moves between teams and where tickets stall or reopen.',
+      'Resolved 40–50 internet-service and billing conversations per day within an SLA-driven contact center handling over 10,000 daily conversations.',
+      'Identified recurring fault patterns across conversations and reported root causes to support process-improvement initiatives.',
+      'Worked daily inside CRM and billing systems, tracing how case data moves between teams and where tickets stall or reopen.',
       'Authored and submitted a formal process-improvement proposal to management, including a documented solution design for complaint handling.',
     ],
   },
@@ -101,7 +100,7 @@ const Home = () => (
 
       <section className="alt" id="about">
         <div className="container">
-          <Heading text="About Me" sub="MIS graduate, ECBA-certified, working on the front line of a 10,000-conversation-a-day contact center — where process gaps show up first." />
+          <Heading text="About Me" sub="MIS graduate, ECBA-certified, with two years on the front line of a 10,000-conversation-a-day contact center — where process gaps show up first." />
           <div className="grid-2">
             <SpotlightCard className="card edu" spotlightColor={SPOT}>
               <div className="eyebrow">Education</div>
@@ -126,20 +125,21 @@ const Home = () => (
         </div>
       </section>
 
-      <section id="experience">
+      <section id="projects">
         <div className="container">
-          <Heading text="Work Experience" />
-          <div className="timeline">
-            {experience.map(e => (
-              <div className="tl-item" key={e.role}>
-                <div className={`marker${e.current ? ' current' : ''}`} />
-                <div>
-                  <small>{e.date}</small>
-                  <h4>{e.role}</h4>
-                  <p className="company">{e.company}</p>
-                  <ul>{e.points.map(p => <li key={p}>{p}</li>)}</ul>
+          <Heading text="Projects" sub="Each case study shows the problem, the method, the actual deliverables, and the result." />
+          <div className="grid-2">
+            {projects.map(p => (
+              <SpotlightCard className="card project" key={p.slug} spotlightColor={SPOT}>
+                <Link className="shot" to={`/projects/${p.slug}`}><img src={p.img} alt={p.alt} loading="lazy" /></Link>
+                <div className="body">
+                  <h3>{p.title}</h3>
+                  <p>{p.problem}</p>
+                  <ul>{p.points.map(x => <li key={x}>{x}</li>)}</ul>
+                  <Tags items={p.tags} />
+                  <div className="actions"><Link to={`/projects/${p.slug}`}>Case study →</Link></div>
                 </div>
-              </div>
+              </SpotlightCard>
             ))}
           </div>
         </div>
@@ -161,21 +161,20 @@ const Home = () => (
         </div>
       </section>
 
-      <section id="projects">
+      <section id="experience">
         <div className="container">
-          <Heading text="Projects" sub="Each case study shows the problem, the method, the actual deliverables, and the result." />
-          <div className="grid-2">
-            {projects.map(p => (
-              <SpotlightCard className="card project" key={p.slug} spotlightColor={SPOT}>
-                <Link className="shot" to={`/projects/${p.slug}`}><img src={p.img} alt={p.alt} loading="lazy" /></Link>
-                <div className="body">
-                  <h3>{p.title}</h3>
-                  <p>{p.problem}</p>
-                  <ul>{p.points.map(x => <li key={x}>{x}</li>)}</ul>
-                  <Tags items={p.tags} />
-                  <div className="actions"><Link to={`/projects/${p.slug}`}>Case study →</Link></div>
+          <Heading text="Work Experience" />
+          <div className="timeline">
+            {experience.map(e => (
+              <div className="tl-item" key={e.role}>
+                <div className={`marker${e.current ? ' current' : ''}`} />
+                <div>
+                  <small>{e.date}</small>
+                  <h4>{e.role}</h4>
+                  <p className="company">{e.company}</p>
+                  <ul>{e.points.map(p => <li key={p}>{p}</li>)}</ul>
                 </div>
-              </SpotlightCard>
+              </div>
             ))}
           </div>
         </div>
@@ -243,9 +242,9 @@ export default function App() {
             <button className="burger" aria-label="Menu" onClick={() => setOpen(o => !o)}>☰</button>
             <div className={`links${open ? ' open' : ''}`} onClick={() => setOpen(false)}>
               <Link to="/#about">About</Link>
-              <Link to="/#experience">Experience</Link>
-              <Link to="/#ba-work">BA Work</Link>
               <Link to="/#projects">Projects</Link>
+              <Link to="/#ba-work">BA Work</Link>
+              <Link to="/#experience">Experience</Link>
               <Link to="/#certificates">Certificates</Link>
               <Link to="/#contact" className="btn btn-primary">Contact</Link>
             </div>
